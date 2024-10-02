@@ -75,7 +75,6 @@ public class TodoService {
        }
 
 
-
         return todos.map(todo -> new TodoResponse(
                 todo.getId(),
                 todo.getTitle(),
