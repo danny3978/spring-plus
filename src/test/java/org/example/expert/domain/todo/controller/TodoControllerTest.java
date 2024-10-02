@@ -3,6 +3,7 @@ package org.example.expert.domain.todo.controller;
 import org.example.expert.config.*;
 import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.common.exception.InvalidRequestException;
+import org.example.expert.domain.common.exception.NotFoundException;
 import org.example.expert.domain.todo.dto.response.TodoResponse;
 import org.example.expert.domain.todo.service.TodoService;
 import org.example.expert.domain.user.dto.response.UserResponse;
@@ -68,7 +69,7 @@ class TodoControllerTest {
 
         // when
         when(todoService.getTodo(todoId))
-                .thenThrow(new InvalidRequestException("Todo not found"));
+                .thenThrow(new NotFoundException("Todo not found"));
 
         // then
         mockMvc.perform(get("/todos/{todoId}", todoId))
