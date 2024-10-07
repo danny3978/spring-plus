@@ -31,8 +31,4 @@ public interface TodoRepository extends JpaRepository<Todo, Long>, TodoRepositor
             "left join fetch t.user u where t.modifiedAt < :startDateTime order by t.modifiedAt desc ")
     Page<Todo> findByModifiedAtIsAfter(LocalDateTime startDateTime, Pageable pageable, Sort sort);
 
-    @Query("SELECT t FROM Todo t " +
-            "LEFT JOIN t.user " +
-            "WHERE t.id = :todoId")
-    Optional<Todo> findByIdWithUser(@Param("todoId") Long todoId);
 }
